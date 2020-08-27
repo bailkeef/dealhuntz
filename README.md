@@ -1,4 +1,4 @@
-# Boilermaker
+# DealHuntz
 
 _Good things come in pairs_
 
