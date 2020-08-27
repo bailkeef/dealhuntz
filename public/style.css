@@ -19,3 +19,38 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ------ALL LISTINGS--------- */
+.all-listings {
+  display: flex;
+}
+
+.listing-preview {
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  -moz-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+}
+
+/* ------SINGLE LISTING--------- */
+
+.listing {
+  display: flex;
+}
+
+.listing__container {
+  margin: 10px;
+  padding: 10px;
+}
+
+.listing__img {
+  width: 300px;
+}
