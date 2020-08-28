@@ -1,7 +1,280 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Listing} = require('../server/db/models')
+
+const testListings = [
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
@@ -9,10 +282,14 @@ async function seed() {
 
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({email: 'murphy@email.com', password: '123'}),
+    testListings.map(testListing => {
+      Listing.create(testListing)
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded test listings`)
   console.log(`seeded successfully`)
 }
 

@@ -3,17 +3,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import AllListings from './AllListings'
 
-const mockListing = {
-  id: 1,
-  address: '123 Main St',
-  price: '$100,000',
-  description:
-    'Great bones, 3 bedroom, 1 bathroom home sits on a huge corner lot! Huge sunroom off the back. Oversized storage shed in the back. Hardwoods throughout under the carpet. Fantastic opportunity to move in, hold as a rental, or fix and flip!',
-  type: 'wholesale',
-  img:
-    'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
-}
-
 const mockListings = [
   {
     id: 1,
