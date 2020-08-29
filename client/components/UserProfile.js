@@ -6,7 +6,7 @@ import AllListings from './AllListings'
 /**
  * COMPONENT
  */
-export const UserHome = props => {
+export const UserProfile = props => {
   const {email} = props
 
   return (

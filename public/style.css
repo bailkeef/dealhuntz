@@ -26,13 +26,22 @@ form div {
 }
 
 /* ------ALL LISTINGS--------- */
+/* .all-listings-container {
+
+} */
+
 .all-listings {
   display: flex;
+  align-items: stretch;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .listing-preview {
   margin: 10px;
   padding: 15px;
+  width: 300px;
+  height: 400px;
   background-color: white;
   border-radius: 5px;
   -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);

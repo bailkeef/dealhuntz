@@ -2,20 +2,23 @@ import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ListingPreview from './ListingPreview'
+import {fetchAllListings} from '../store/listings'
 
 /**
  * COMPONENT
  */
 export const AllListings = props => {
+  useEffect(() => {
+    props.fetchAllListings()
+  }, [])
   console.log(props, 'props')
-  console.log(props.props.img, 'props')
-  let allListings = props.props
+  let allListings = props.allListings
   return (
     <div className="all-listings">
       {allListings.map((listing, id) => {
         return (
-          <div key={id}>
-            <ListingPreview props={listing} />
+          <div className="listing-preview" key={id}>
+            <ListingPreview listing={listing} />
           </div>
         )
       })}
@@ -27,10 +30,18 @@ export const AllListings = props => {
  * CONTAINER
  */
 const mapState = state => {
-  return {}
+  return {
+    allListings: state.listings.allListings
+  }
 }
 
-export default connect(mapState)(AllListings)
+const mapDispatch = (dispatch, state) => {
+  return {
+    fetchAllListings: () => dispatch(fetchAllListings())
+  }
+}
+
+export default connect(mapState, mapDispatch)(AllListings)
 
 /**
  * PROP TYPES

@@ -6,15 +6,13 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const Listing = props => {
-  console.log(props, 'props')
-  console.log(props.props.img, 'props')
   return (
     <div className="listing">
-      <img src={props.props.img} className="listing__img" />
+      <img src={props.listing.imgUrl} className="listing__img" />
       <div className="listing__container">
-        <h3>{props.props.address}</h3>
-        <h3>{props.props.price}</h3>
-        <p>{props.props.description}</p>
+        <h3>{props.listing.address}</h3>
+        <h3>{props.listing.price}</h3>
+        <p>{props.listing.description}</p>
         <button type="submit" className="listing__contact-button">
           Contact Seller
         </button>
