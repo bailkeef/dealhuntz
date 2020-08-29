@@ -11,7 +11,6 @@ export const UserHome = props => {
 
   return (
     <div className="all-listings-container">
-      <h3>Welcome, {email}</h3>
       <AllListings />
     </div>
   )
