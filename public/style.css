@@ -20,15 +20,13 @@ form div {
   display: inline-block;
 }
 
+/* -------- NAV BAR ------- */
 .navbar {
   display: flex;
   justify-content: space-between;
 }
 
 /* ------ALL LISTINGS--------- */
-/* .all-listings-container {
-
-} */
 
 .all-listings {
   display: flex;

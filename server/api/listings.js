@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:listingId', async (req, res, next) => {
   try {
-    const listings = await Listing.findAll({
+    const listings = await Listing.findOne({
       where: {
         id: req.params.listingId
       }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ListingPreview from './ListingPreview'
 import {fetchAllListings} from '../store/listings'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -11,14 +12,17 @@ export const AllListings = props => {
   useEffect(() => {
     props.fetchAllListings()
   }, [])
-  console.log(props, 'props')
+
   let allListings = props.allListings
+
   return (
     <div className="all-listings">
       {allListings.map((listing, id) => {
         return (
           <div className="listing-preview" key={id}>
-            <ListingPreview listing={listing} />
+            <Link to={`listings/${listing.id}`}>
+              <ListingPreview listing={listing} />
+            </Link>
           </div>
         )
       })}

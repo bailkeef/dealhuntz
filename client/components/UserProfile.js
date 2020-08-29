@@ -12,7 +12,6 @@ export const UserProfile = props => {
   return (
     <div className="all-listings-container">
       <h3>Welcome, {email}</h3>
-      <AllListings />
     </div>
   )
 }
@@ -26,11 +25,4 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+export default connect(mapState)(UserProfile)
