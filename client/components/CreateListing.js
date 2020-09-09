@@ -43,7 +43,18 @@ export const CreateListing = props => {
             name="zipcode"
             ref={register({required: 'zipcode required'})}
           />
+          <textarea
+            rows="4"
+            cols="50"
+            name="description"
+            placeholder="description"
+            ref={register({required: 'description required'})}
+          />
           {errors.address && <p>{errors.address.message}</p>}
+          {errors.city && <p>{errors.city.message}</p>}
+          {errors.state && <p>{errors.state.message}</p>}
+          {errors.zipcode && <p>{errors.zipcode.message}</p>}
+          {errors.description && <p>{errors.description.message}</p>}
           <input type="submit" />
         </form>
       </div>
