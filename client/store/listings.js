@@ -6,13 +6,15 @@ import history from '../history'
  */
 const GET_SINGLE_LISTING = 'GET_SINGLE_LISTING'
 const GET_ALL_LISTINGS = 'GET_ALL_LISTINGS'
+const GET_MY_LISTINGS = 'GET_MY_LISTINGS'
 
 /**
  * INITIAL STATE
  */
 const initialState = {
   allListings: [],
-  singleListing: {}
+  singleListing: {},
+  myListings: []
 }
 
 /**
@@ -20,6 +22,7 @@ const initialState = {
  */
 const getListing = listing => ({type: GET_SINGLE_LISTING, listing})
 const getAllListings = listings => ({type: GET_ALL_LISTINGS, listings})
+const getMyListings = listings => ({type: GET_MY_LISTINGS, listings})
 
 /**
  * THUNK CREATORS
@@ -44,6 +47,17 @@ export const fetchSingleListing = listingId => async dispatch => {
   }
 }
 
+export const fetchMyListings = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/listings/users/${userId}`)
+    let listings = res.data
+    console.log(listings, 'listings')
+    dispatch(getMyListings(listings || initialState))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */
@@ -53,6 +67,8 @@ export default function(state = initialState, action) {
       return {...state, singleListing: action.listing}
     case GET_ALL_LISTINGS:
       return {...state, allListings: action.listings}
+    case GET_MY_LISTINGS:
+      return {...state, myListings: action.listings}
     default:
       return state
   }

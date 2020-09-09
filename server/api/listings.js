@@ -24,11 +24,24 @@ router.get('/:listingId', async (req, res, next) => {
   }
 })
 
-router.get('/:city', async (req, res, next) => {
+router.get('/location/:city', async (req, res, next) => {
   try {
     const listings = await Listing.findAll({
       where: {
         city: req.params.city
+      }
+    })
+    res.json(listings)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/users/:userId', async (req, res, next) => {
+  try {
+    const listings = await Listing.findAll({
+      where: {
+        userId: req.params.userId
       }
     })
     res.json(listings)

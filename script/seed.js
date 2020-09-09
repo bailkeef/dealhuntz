@@ -90,6 +90,7 @@ async function seed() {
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'}),
+    User.create({email: 'bnk423@gmail.com', password: '123'}),
     testListings.map(testListing => {
       Listing.create(testListing)
     })
