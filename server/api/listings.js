@@ -49,3 +49,17 @@ router.get('/users/:userId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/create/:userId', async (req, res, next) => {
+  try {
+    const listing = await Listing.create({
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipcode
+    })
+    res.json(listing)
+  } catch (err) {
+    next(err)
+  }
+})
