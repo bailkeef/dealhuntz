@@ -10,8 +10,7 @@ export const CreateListing = props => {
   const {register, handleSubmit, errors} = useForm()
 
   const onSubmit = data => {
-    console.log(data)
-    this.props.addNewListing(this.props.userId, data)
+    props.addNewListing(props.user.id, data)
   }
 
   return (
@@ -87,13 +86,13 @@ export const CreateListing = props => {
 const mapState = state => {
   return {
     // myListings: state.listings.myListings,
-    userId: state.user
+    user: state.user
   }
 }
 
 const mapDispatch = (dispatch, state) => {
   return {
-    addNewListing: userId => dispatch(addNewListing(userId, listing))
+    addNewListing: (userId, listing) => dispatch(addNewListing(userId, listing))
   }
 }
 

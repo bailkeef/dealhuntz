@@ -82,7 +82,7 @@ export default function(state = initialState, action) {
     case GET_MY_LISTINGS:
       return {...state, myListings: action.listings}
     case ADD_LISTING:
-      return {...state, myListings: [...state.myListings, action.listings]}
+      return {...state, myListings: [...state.myListings, action.listing]}
     default:
       return state
   }
