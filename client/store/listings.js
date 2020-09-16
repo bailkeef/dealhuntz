@@ -7,6 +7,7 @@ import history from '../history'
 const GET_SINGLE_LISTING = 'GET_SINGLE_LISTING'
 const GET_ALL_LISTINGS = 'GET_ALL_LISTINGS'
 const GET_MY_LISTINGS = 'GET_MY_LISTINGS'
+const ADD_LISTING = 'ADD_LISTING'
 
 /**
  * INITIAL STATE
@@ -23,6 +24,7 @@ const initialState = {
 const getListing = listing => ({type: GET_SINGLE_LISTING, listing})
 const getAllListings = listings => ({type: GET_ALL_LISTINGS, listings})
 const getMyListings = listings => ({type: GET_MY_LISTINGS, listings})
+const createListing = listing => ({type: ADD_LISTING, listing})
 
 /**
  * THUNK CREATORS
@@ -58,6 +60,16 @@ export const fetchMyListings = userId => async dispatch => {
   }
 }
 
+export const addNewListing = (userId, listing) => async dispatch => {
+  try {
+    const res = await axios.post(`/api/listings/create/${userId}`, listing)
+    let newListing = res.data
+    dispatch(createListing(newListing || initialState))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */
@@ -69,6 +81,8 @@ export default function(state = initialState, action) {
       return {...state, allListings: action.listings}
     case GET_MY_LISTINGS:
       return {...state, myListings: action.listings}
+    case ADD_LISTING:
+      return {...state, myListings: [...state.myListings, action.listings]}
     default:
       return state
   }

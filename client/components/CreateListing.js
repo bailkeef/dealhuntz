@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {useForm} from 'react-hook-form'
-// import {fetchMyListings} from '../store/listings'
-// import {Link} from 'react-router-dom'
+import {addNewListing} from '../store/listings'
 
 /**
  * COMPONENT
@@ -12,6 +11,7 @@ export const CreateListing = props => {
 
   const onSubmit = data => {
     console.log(data)
+    this.props.addNewListing(this.props.userId, data)
   }
 
   return (
@@ -56,6 +56,7 @@ export const CreateListing = props => {
               <option value="turnkey">turnkey</option>
               <option value="flip">flip</option>
             </select>
+            {/* <input type="file" id="img" name="img" accept="image/*"></input> */}
           </div>
           <div className="create-listing-form-section">
             <textarea
@@ -86,13 +87,13 @@ export const CreateListing = props => {
 const mapState = state => {
   return {
     // myListings: state.listings.myListings,
-    // user: state.user
+    userId: state.user
   }
 }
 
 const mapDispatch = (dispatch, state) => {
   return {
-    // fetchMyListings: (userId) => dispatch(fetchMyListings(userId))
+    addNewListing: userId => dispatch(addNewListing(userId, listing))
   }
 }
 
