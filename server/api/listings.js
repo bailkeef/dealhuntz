@@ -56,7 +56,10 @@ router.post('/create/:userId', async (req, res, next) => {
       address: req.body.address,
       city: req.body.city,
       state: req.body.state,
-      zipcode: req.body.zipcode
+      zipcode: req.body.zipcode,
+      price: req.body.price,
+      description: req.body.description,
+      type: req.body.type
     })
     res.json(listing)
   } catch (err) {

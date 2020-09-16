@@ -1,9 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', 'Roboto';
 }
 
 a {
   text-decoration: none;
+  color: black;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: blue;
+}
+a:focus {
+  text-decoration: none;
+  color: blue;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: blue;
 }
 
 label {
@@ -21,6 +42,10 @@ form div {
 }
 
 /* -------- NAV BAR ------- */
+.navbar-container {
+  margin: 20px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -66,4 +91,40 @@ form div {
 .add-new-listing-button {
   margin: 10px;
   padding: 10px;
+}
+
+.create-listing {
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  -moz-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  width: 50%;
+  padding: 15px;
+  margin: 15px;
+}
+
+.create-listing-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-listing h2 {
+  margin: 10px;
+  padding: 5px;
+}
+
+.create-listing-form-address {
+  display: flex;
+}
+
+.create-listing-form input,
+button {
+  margin: 5px;
+  padding: 5px;
+}
+
+.create-listing-form select {
+  margin: 5px;
+  padding: 5px;
 }
