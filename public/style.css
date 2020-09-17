@@ -51,6 +51,15 @@ form div {
   justify-content: space-between;
 }
 
+/* -------- CARD ------- */
+.card {
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  -moz-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+  box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
+}
+
 /* ------ALL LISTINGS--------- */
 
 .all-listings {
@@ -66,21 +75,11 @@ form div {
   padding: 15px;
   width: 300px;
   height: 400px;
-  background-color: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
-  -moz-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
-  box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
 }
 
 .filter-container {
   margin: 10px;
   padding: 15px;
-  background-color: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
-  -moz-box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
-  box-shadow: 5px 5px 14px 1px rgba(135, 132, 135, 1);
 }
 
 /* ------SINGLE LISTING--------- */

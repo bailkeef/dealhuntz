@@ -18,12 +18,12 @@ export const AllListings = props => {
 
   return (
     <div className="all-listings">
-      <div className="filter-container">
+      <div className="filter-container card">
         <DropdownFilter />
       </div>
       {allListings.map((listing, id) => {
         return (
-          <div className="listing-preview" key={id}>
+          <div className="listing-preview card" key={id}>
             <Link to={`listings/${listing.id}`}>
               <ListingPreview listing={listing} />
             </Link>
