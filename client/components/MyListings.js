@@ -25,7 +25,7 @@ export const MyListings = props => {
       <div className="all-listings">
         {myListings.map((listing, id) => {
           return (
-            <div className="listing-preview" key={id}>
+            <div className="listing-preview card" key={id}>
               <Link to={`listings/${listing.id}`}>
                 <ListingPreview listing={listing} />
               </Link>

@@ -10,16 +10,39 @@ import DropdownFilter from './filtering/DropdownFilter'
  * COMPONENT
  */
 export const AllListings = props => {
+  const [usState, setUsState] = React.useState('')
+  const [price, setPrice] = React.useState('')
+  const [type, setType] = React.useState('')
+
   useEffect(() => {
     props.fetchAllListings()
   }, [])
+
+  useEffect(
+    () => {
+      console.log('usState', usState)
+    },
+    [usState]
+  )
+
+  const handleChange = e => {
+    console.log(e, 'e in handleChange alllisting')
+    if (e.target.name === 'usState') setUsState(e.target.value)
+    else if (e.target.name === 'price') setPrice(e.target.value)
+    else if (e.target.name === 'type') setType(e.target.value)
+  }
 
   let allListings = props.allListings
 
   return (
     <div className="all-listings">
       <div className="filter-container card">
-        <DropdownFilter />
+        <DropdownFilter
+          onChange={handleChange}
+          usState={usState}
+          price={price}
+          type={type}
+        />
       </div>
       {allListings.map((listing, id) => {
         return (
