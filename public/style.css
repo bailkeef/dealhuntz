@@ -113,6 +113,11 @@ form div {
   flex-direction: column;
 }
 
+.create-listing-form-section {
+  display: flex;
+  align-items: center;
+}
+
 .create-listing h2 {
   margin: 10px;
   padding: 5px;
