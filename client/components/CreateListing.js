@@ -8,23 +8,10 @@ import {addNewListing} from '../store/listings'
  */
 export const CreateListing = props => {
   const {register, handleSubmit, errors} = useForm()
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('')
-  const [zipcode, setZipcode] = useState('')
-  const [price, setPrice] = useState('')
-  const [type, setType] = useState('')
-  const [description, setDescription] = useState('')
 
   const onSubmit = data => {
+    console.log(data)
     props.addNewListing(props.user.id, data)
-    // setAddress('');
-    // setCity('');
-    // setState('');
-    // setZipcode('');
-    // setPrice('');
-    // setType('');
-    // setDescription('');
     props.history.push('/sell')
   }
 
@@ -38,14 +25,12 @@ export const CreateListing = props => {
               type="text"
               placeholder="address"
               name="address"
-              // value={address}
               ref={register({required: 'address required'})}
             />
             <input
               type="text"
               placeholder="city"
               name="city"
-              // value={city}
               ref={register({required: 'city required'})}
             />
           </div>
@@ -54,7 +39,6 @@ export const CreateListing = props => {
               type="text"
               placeholder="state"
               name="state"
-              // value={state}
               ref={register({required: 'state required'})}
             >
               <option value="AL">Alabama</option>
@@ -114,7 +98,6 @@ export const CreateListing = props => {
               type="text"
               placeholder="zipcode"
               name="zipcode"
-              // value={zipcode}
               ref={register({required: 'zipcode required'})}
             />
           </div>
@@ -123,14 +106,19 @@ export const CreateListing = props => {
               type="text"
               placeholder="price"
               name="price"
-              // value={price}
               ref={register({required: 'price required'})}
             />
             <select name="type" ref={register({required: 'type required'})}>
               <option value="turnkey">turnkey</option>
               <option value="flip">flip</option>
             </select>
-            <input type="file" id="img" name="mainImage" accept="image/*" />
+            <input
+              type="file"
+              id="img"
+              name="mainImage"
+              accept="image/*"
+              ref={register({required: 'main image required'})}
+            />
           </div>
           <div className="create-listing-form-section">
             <textarea
@@ -138,7 +126,6 @@ export const CreateListing = props => {
               cols="40"
               name="description"
               placeholder="description"
-              // value={description}
               ref={register({required: 'description required'})}
             />
           </div>

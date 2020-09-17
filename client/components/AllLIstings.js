@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import ListingPreview from './ListingPreview'
 import {fetchAllListings} from '../store/listings'
 import {Link} from 'react-router-dom'
+import DropdownFilter from './filtering/DropdownFilter'
 
 /**
  * COMPONENT
@@ -17,6 +18,9 @@ export const AllListings = props => {
 
   return (
     <div className="all-listings">
+      <div className="filter-container">
+        <DropdownFilter />
+      </div>
       {allListings.map((listing, id) => {
         return (
           <div className="listing-preview" key={id}>
