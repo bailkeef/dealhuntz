@@ -22,17 +22,26 @@ export const AllListings = props => {
     () => {
       console.log('usState', usState)
     },
-    [usState]
+    [usState, price, type]
   )
 
   const handleChange = e => {
-    console.log(e, 'e in handleChange alllisting')
     if (e.target.name === 'usState') setUsState(e.target.value)
     else if (e.target.name === 'price') setPrice(e.target.value)
     else if (e.target.name === 'type') setType(e.target.value)
   }
 
   let allListings = props.allListings
+  const filtersOn = usState.length || price.length || type.length
+  let filteredListings = allListings.filter(curr => {
+    console.log(curr, usState, type)
+    return (
+      (usState === '' || usState === curr.state) &&
+      (type === '' || type === curr.type)
+    )
+  })
+  console.log(allListings, 'all')
+  console.log(filteredListings, 'filtered listings')
 
   return (
     <div className="all-listings">
@@ -44,7 +53,7 @@ export const AllListings = props => {
           type={type}
         />
       </div>
-      {allListings.map((listing, id) => {
+      {filteredListings.map((listing, id) => {
         return (
           <div className="listing-preview card" key={id}>
             <Link to={`listings/${listing.id}`}>
