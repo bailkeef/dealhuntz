@@ -57,7 +57,7 @@ router.post(
   '/create/:userId',
   upload.single('mainImage'),
   async (req, res, next) => {
-    console.log(req.file)
+    console.log(req.file, 'REQ.FILE --------!!!!')
     try {
       const listing = await Listing.create({
         address: req.body.address,

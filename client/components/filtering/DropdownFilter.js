@@ -31,9 +31,9 @@ export const DropdownFilter = props => {
           name="usState"
           onChange={handleChange}
         >
-          <MenuItem value="New Jersey">New Jersey</MenuItem>
-          <MenuItem value="Michigan">Michigan</MenuItem>
-          <MenuItem value="Florida">Florida</MenuItem>
+          <MenuItem value="NJ">New Jersey</MenuItem>
+          <MenuItem value="MI">Michigan</MenuItem>
+          <MenuItem value="FL">Florida</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>

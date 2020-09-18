@@ -42,6 +42,7 @@ form div {
 }
 
 /* -------- NAV BAR ------- */
+
 .navbar-container {
   margin: 20px;
 }
@@ -67,7 +68,7 @@ form div {
   align-items: stretch;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .listing-preview {
