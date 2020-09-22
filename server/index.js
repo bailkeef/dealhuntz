@@ -10,6 +10,12 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const fileUpload = require('express-fileupload')
+// var methodOverride = require('method-override');
+// var multipart = require('multipart');
+var multer = require('multer')
+var upload = multer({dest: 'uploads/'})
+
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -44,9 +50,24 @@ const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
 
+  //file uploads
+  app.use(fileUpload()) //express-fileupload
+
+  var isMultipart = /^multipart\//i
+  var urlencodedMiddleware = express.urlencoded({extended: true})
+  app.use(function(req, res, next) {
+    var type = req.get('Content-Type')
+    console.log(type, 'TYPEEEEE_-------')
+    if (isMultipart.test(type)) {
+      console.log('IS MULTIPART')
+      return next()
+    }
+    return urlencodedMiddleware(req, res, next)
+  })
+
   // body parsing middleware
   app.use(express.json())
-  app.use(express.urlencoded({extended: true}))
+  // app.use(express.urlencoded({extended: true}))
 
   // compression middleware
   app.use(compression())
@@ -122,3 +143,24 @@ if (require.main === module) {
 } else {
   createApp()
 }
+
+app.post('/photos/upload', upload.any('picture'), async (req, res, next) => {
+  try {
+    console.log(req.files, 'req.files ------')
+    if (req.files === null) {
+      res.status(400).send('no file uploaded')
+    } else {
+      let data = {
+        fileName: req.files[0].originalname,
+        filePath: req.files[0].path
+      }
+      console.log(data, 'DATA----')
+      res.send(data)
+    }
+
+    // const {name, data} = req.files.picture;
+    // await knex.insert({name: name, img: data}).into('picture');
+  } catch (err) {
+    next(err)
+  }
+})

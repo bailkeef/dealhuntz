@@ -9,7 +9,8 @@ import {
   UserProfile,
   SingleListing,
   MyListings,
-  CreateListing
+  CreateListing,
+  CreateListingTest
 } from './components'
 import {me} from './store'
 
@@ -38,7 +39,7 @@ class Routes extends Component {
             <Route
               exact
               path="/listings/create-listing"
-              component={CreateListing}
+              component={(CreateListing, CreateListingTest)}
             />
             <Route
               exact

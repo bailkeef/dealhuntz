@@ -19,7 +19,11 @@ export const CreateListing = props => {
     <div className="create-listing">
       <h2>Create New Listing</h2>
       <div className="all-listings">
-        <form onSubmit={handleSubmit(onSubmit)} className="create-listing-form">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="create-listing-form"
+          encType="multipart/form-data"
+        >
           <div className="create-listing-form-section">
             <input
               type="text"
@@ -115,7 +119,7 @@ export const CreateListing = props => {
             <input
               type="file"
               id="img"
-              name="mainImage"
+              name="picture"
               accept="image/*"
               ref={register({required: 'main image required'})}
             />

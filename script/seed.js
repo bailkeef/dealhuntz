@@ -7,7 +7,7 @@ const testListings = [
   {
     address: '980 Transport Avenue',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'NJ',
     price: '$300,000',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
@@ -19,7 +19,7 @@ const testListings = [
     address: '123 Main St',
     price: '$400,000',
     city: 'Dallas',
-    state: 'Texas',
+    state: 'TX',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
     type: 'turnkey',
@@ -29,7 +29,7 @@ const testListings = [
   {
     address: '806 Washington St',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'NJ',
     price: '$500,000',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
@@ -40,7 +40,7 @@ const testListings = [
   {
     address: '980 Transport Avenue',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'NJ',
     price: '$271808.71',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
@@ -51,7 +51,18 @@ const testListings = [
   {
     address: '980 Transport Avenue',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'FL',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'flip',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    city: 'Jersey City',
+    state: 'CA',
     price: '$271808.71',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
@@ -62,7 +73,7 @@ const testListings = [
   {
     address: '980 Transport Avenue',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'MI',
     price: '$271808.71',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
@@ -73,11 +84,44 @@ const testListings = [
   {
     address: '980 Transport Avenue',
     city: 'Jersey City',
-    state: 'New Jersey',
+    state: 'MI',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'flip',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    city: 'Jersey City',
+    state: 'MI',
     price: '$271808.71',
     description:
       'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
     type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    city: 'Jersey City',
+    state: 'MI',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'turnkey',
+    imgUrl:
+      'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
+  },
+  {
+    address: '980 Transport Avenue',
+    city: 'Jersey City',
+    state: 'MI',
+    price: '$271808.71',
+    description:
+      'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
+    type: 'flip',
     imgUrl:
       'https://charlotteagenda-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/04/hot-homes-outdoor-living.jpg'
   }
