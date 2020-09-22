@@ -11,6 +11,7 @@ export const SingleListing = props => {
 
   useEffect(() => {
     props.fetchSingleListing(listingId)
+    console.log(props, 'props')
   }, [])
 
   let listing = props.singleListing
@@ -22,8 +23,9 @@ export const SingleListing = props => {
         <h3>{listing.address}</h3>
         <h3>{listing.price}</h3>
         <p>{listing.description}</p>
+        <button>{listing.sellerEmail}</button>
         <button type="submit" className="listing__contact-button">
-          Contact Seller
+          View Seller
         </button>
       </div>
     </div>

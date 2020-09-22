@@ -41,8 +41,12 @@ export const fetchAllListings = () => async dispatch => {
 
 export const fetchSingleListing = listingId => async dispatch => {
   try {
-    const res = await axios.get(`/api/listings/${listingId}`)
-    let listing = res.data
+    const listingRes = await axios.get(`/api/listings/${listingId}`)
+    const listing = listingRes.data
+    let {userId} = listing
+    const userRes = await axios.get(`/api/users/${Number(userId)}`)
+    listing.sellerEmail = userRes.data.email
+    console.log(listing, 'listing')
     dispatch(getListing(listing || initialState))
   } catch (err) {
     console.error(err)

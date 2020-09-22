@@ -32,16 +32,12 @@ export const AllListings = props => {
   }
 
   let allListings = props.allListings
-  const filtersOn = usState.length || price.length || type.length
   let filteredListings = allListings.filter(curr => {
-    console.log(curr, usState, type)
     return (
       (usState === '' || usState === curr.state) &&
       (type === '' || type === curr.type)
     )
   })
-  console.log(allListings, 'all')
-  console.log(filteredListings, 'filtered listings')
 
   return (
     <div className="all-listings">
