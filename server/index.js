@@ -14,7 +14,34 @@ const fileUpload = require('express-fileupload')
 // var methodOverride = require('method-override');
 // var multipart = require('multipart');
 var multer = require('multer')
-var upload = multer({dest: 'uploads/'})
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function(req, file, cb) {
+    const now = new Date().toISOString()
+    const date = now.replace(/:/g, '-')
+    cb(null, date + file.originalname)
+  }
+})
+
+const fileFilter = (req, file, cb) => {
+  //reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true)
+  } else {
+    cb(new Error('not a valid image type'), false)
+  }
+}
+
+var upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+})
 
 module.exports = app
 
