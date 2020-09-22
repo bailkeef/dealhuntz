@@ -26,13 +26,13 @@ export const CreateListingTest = props => {
     formData.append('file', file)
 
     try {
-      const res = axios.post('/photos/upload', formData, {
+      const res = await axios.post('/photos/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
 
-      console.log(res, 'res in test')
+      console.log(res.data, 'res in test')
       const {fileName, filePath} = res.data
       console.log(fileName, filePath, 'fileName and filePath')
 
