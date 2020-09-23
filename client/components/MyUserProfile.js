@@ -8,17 +8,24 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 export const MyUserProfile = props => {
-  const user = props.user
+  let user = props.user
+  const listingUserId = props.match.params.userId
+  const isSameUser = user.id.toString() === listingUserId
+  console.log(props.singleListingUser)
+  if (!isSameUser) user = props.singleListingUser
+  console.log(user, listingUserId, isSameUser)
 
   return (
     <div className="user-profile-container card">
       <img className="user-profile-pic" src={user.profilePic} />
       <div className="user-profile-info">
         <h3>Welcome, {user.email}</h3>
-        <h4>{user.description}</h4>
-        <Link to="/profile/update">
-          <button>Update My Profile</button>
-        </Link>
+        <h4>{user.experience}</h4>
+        {isSameUser && (
+          <Link to="/profile/update">
+            <button>Update My Profile</button>
+          </Link>
+        )}
       </div>
     </div>
   )
@@ -29,7 +36,8 @@ export const MyUserProfile = props => {
  */
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    singleListingUser: state.listings.singleListing.userInfo
   }
 }
 

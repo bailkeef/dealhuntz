@@ -11,9 +11,6 @@ export const ListingPreview = props => {
       <img src={props.listing.imgUrl} className="listing__img" />
       <h3>{props.listing.address}</h3>
       <h3>{props.listing.price}</h3>
-      <button type="submit" className="listing__contact-button">
-        Contact Seller
-      </button>
     </div>
   )
 }

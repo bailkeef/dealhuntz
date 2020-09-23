@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {fetchSingleListing} from '../store/listings'
 
 /**
@@ -15,6 +16,7 @@ export const SingleListing = props => {
   }, [])
 
   let listing = props.singleListing
+  console.log(listing, 'LISTING')
 
   return (
     <div className="listing">
@@ -24,13 +26,11 @@ export const SingleListing = props => {
         <h3>{listing.price}</h3>
         <p>{listing.description}</p>
         <button>{listing.sellerEmail}</button>
-        <button
-          href={`/users/${props.userId}`}
-          type="submit"
-          className="listing__contact-button"
-        >
-          View Seller
-        </button>
+        <Link to={`/profile/${listing.userId}`}>
+          <button type="submit" className="listing__view-seller">
+            View Seller
+          </button>
+        </Link>
       </div>
     </div>
   )

@@ -11,6 +11,7 @@ export const CreateListing = props => {
 
   const onSubmit = data => {
     console.log(data)
+    e.preventDefault()
     props.addNewListing(props.user.id, data)
     props.history.push('/sell')
   }
