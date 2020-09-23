@@ -84,9 +84,7 @@ const createApp = () => {
   var urlencodedMiddleware = express.urlencoded({extended: true})
   app.use(function(req, res, next) {
     var type = req.get('Content-Type')
-    console.log(type, 'TYPEEEEE_-------')
     if (isMultipart.test(type)) {
-      console.log('IS MULTIPART')
       return next()
     }
     return urlencodedMiddleware(req, res, next)

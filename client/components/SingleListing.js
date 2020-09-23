@@ -25,7 +25,6 @@ export const SingleListing = props => {
         <h3>{listing.address}</h3>
         <h3>{listing.price}</h3>
         <p>{listing.description}</p>
-        <button>{listing.sellerEmail}</button>
         <Link to={`/profile/${listing.userId}`}>
           <button type="submit" className="listing__view-seller">
             View Seller
