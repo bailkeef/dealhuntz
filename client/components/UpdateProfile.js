@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {useForm} from 'react-hook-form'
-import {updateProfile} from '../store/users'
+import {updateProfile} from '../store/user'
 
 /**
  * COMPONENT
@@ -11,6 +11,7 @@ export const UpdateProfile = props => {
 
   const onSubmit = data => {
     props.updateProfile(props.user.id, data)
+    console.log(data, 'data from update profile')
     props.history.push('/profile')
   }
 
@@ -26,63 +27,36 @@ export const UpdateProfile = props => {
           <div className="create-listing-form-section">
             <input
               type="text"
-              placeholder="address"
-              name="address"
-              ref={register({required: 'address required'})}
+              placeholder="name"
+              name="name"
+              ref={register()}
             />
             <input
               type="text"
-              placeholder="city"
-              name="city"
-              ref={register({required: 'city required'})}
+              placeholder="profile pic url"
+              name="profilePic"
+              ref={register()}
             />
-          </div>
-          <div className="create-listing-form-section">
             <input
               type="text"
-              placeholder="zipcode"
-              name="zipcode"
-              ref={register({required: 'zipcode required'})}
-            />
-          </div>
-          <div className="create-listing-form-section">
-            <input
-              type="text"
-              placeholder="price"
-              name="price"
-              ref={register({required: 'price required'})}
-            />
-            <select name="type" ref={register({required: 'type required'})}>
-              <option value="turnkey">turnkey</option>
-              <option value="flip">flip</option>
-            </select>
-            <input
-              type="file"
-              id="img"
-              name="picture"
-              accept="image/*"
-              ref={register({required: 'main image required'})}
+              placeholder="market"
+              name="market"
+              ref={register()}
             />
           </div>
           <div className="create-listing-form-section">
             <textarea
               rows="4"
               cols="40"
-              name="description"
-              placeholder="description"
-              ref={register({required: 'description required'})}
+              type="text"
+              placeholder="experience"
+              name="experience"
+              ref={register()}
             />
           </div>
           <div className="create-listing-form-section">
             <input type="submit" />
           </div>
-          {errors.address && <p>{errors.address.message}</p>}
-          {errors.city && <p>{errors.city.message}</p>}
-          {errors.state && <p>{errors.state.message}</p>}
-          {errors.zipcode && <p>{errors.zipcode.message}</p>}
-          {errors.price && <p>{errors.price.message}</p>}
-          {errors.description && <p>{errors.description.message}</p>}
-          {errors.type && <p>{errors.type.message}</p>}
         </form>
       </div>
     </div>
@@ -99,7 +73,9 @@ const mapState = state => {
 }
 
 const mapDispatch = (dispatch, state) => {
-  return {}
+  return {
+    updateProfile: userId => dispatch(updateProfile(userId))
+  }
 }
 
 export default connect(mapState, mapDispatch)(UpdateProfile)

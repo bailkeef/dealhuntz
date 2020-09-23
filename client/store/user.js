@@ -58,6 +58,16 @@ export const logout = () => async dispatch => {
   }
 }
 
+export const updateProfile = (userId, data) => async dispatch => {
+  try {
+    console.log('inside updateProfile thunk')
+    let updatedUser = await axios.put(`/api/users/${userId}`, data)
+    dispatch(updateUser(updatedUser))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */

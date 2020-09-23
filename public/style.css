@@ -149,3 +149,20 @@ button {
   margin: 5px;
   padding: 5px;
 }
+
+/* ------- USER PROFILE -------- */
+.user-profile-container {
+  display: flex;
+  margin: 10ox;
+  padding: 10px;
+}
+
+.user-profile-pic {
+  width: 300px;
+  border-radius: 50%;
+}
+
+.user-profile-info {
+  margin: 10ox;
+  padding: 10px;
+}

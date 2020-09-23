@@ -27,10 +27,16 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING
   },
-  description: {
+  name: {
     type: Sequelize.STRING
   },
   profilePic: {
+    type: Sequelize.STRING
+  },
+  market: {
+    type: Sequelize.STRING
+  },
+  experience: {
     type: Sequelize.STRING
   }
 })

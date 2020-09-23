@@ -132,9 +132,30 @@ async function seed() {
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'}),
-    User.create({email: 'bnk423@gmail.com', password: '123'}),
+    User.create({
+      email: 'cody@email.com',
+      password: '123',
+      description:
+        'Hello! I am an investor out of OCcean/Monmouth County, New Jersey. I am looking for off market deals to flip and buy/hold',
+      profilePic:
+        'https://thumbs.dreamstime.com/b/profile-icon-female-african-american-avatar-woman-portrait-casual-person-silhouette-face-flat-design-vector-52547954.jpg'
+    }),
+    User.create({
+      email: 'murphy@email.com',
+      password: '123',
+      description:
+        'Hello! I am an investor out of OCcean/Monmouth County, New Jersey. I am looking for off market deals to flip and buy/hold',
+      profilePic:
+        'https://thumbs.dreamstime.com/b/profile-icon-female-african-american-avatar-woman-portrait-casual-person-silhouette-face-flat-design-vector-52547954.jpg'
+    }),
+    User.create({
+      email: 'bnk423@gmail.com',
+      password: '123',
+      description:
+        'Hello! I am an investor out of OCcean/Monmouth County, New Jersey. I am looking for off market deals to flip and buy/hold',
+      profilePic:
+        'https://thumbs.dreamstime.com/b/profile-icon-female-african-american-avatar-woman-portrait-casual-person-silhouette-face-flat-design-vector-52547954.jpg'
+    }),
     testListings.map(testListing => {
       Listing.create(testListing)
     })

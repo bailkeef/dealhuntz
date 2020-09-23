@@ -35,8 +35,11 @@ router.put('/:userId', async (req, res, next) => {
     const userToUpdate = await User.findOne({
       attributes: ['id', 'email']
     })
+
     const updatedUser = await userToUpdate.update({
-      description: req.body.description,
+      name: req.body.name,
+      market: req.body.market,
+      experience: req.body.experience,
       profilePic: req.body.profilePic
     })
 
